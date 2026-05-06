@@ -49,8 +49,29 @@ graph TD
     F --> D
     F --> M
     F --> O
+```
 
-    src/main/java/com/ultratrack/
+---
+
+## 🧩 GoF Design Patterns Composition
+
+To maintain low coupling, high cohesion, and scalable code, UltraTrack employs a composition of six Gang of Four (GoF) design patterns.
+
+| Pattern | Type | Location | Role |
+| :--- | :--- | :--- | :--- |
+| 🚪 **Facade** | Structural | `application.facade` | Provides a single, unified entry point (`processNewTelemetry()`) to hide complex subsystem orchestration from external clients. |
+| 🔄 **Iterator** | Behavioral | `infrastructure.iterator` | Standardizes the traversal of complex incoming telemetry data streams (JSON, queues) without exposing internal representations. |
+| 🛡️ **Proxy** | Structural | `infrastructure.proxy` | Intercepts resource-intensive historical data queries, utilizing caching and lazy initialization to protect server memory. |
+| 🧠 **Strategy** | Behavioral | `domain.strategy` | Injects distinct mathematical strategies (e.g., `FlatTerrainStrategy`, `MountainTrailStrategy`) at runtime based on geolocation, avoiding massive conditional blocks. |
+| 🎁 **Decorator** | Structural | `domain.decorator` | Dynamically wraps basic health alerts with additional behaviors (e.g., `HighPriority`, `Encrypted`) at runtime to prevent subclass explosion. |
+| 📡 **Observer** | Behavioral | `application.observer` | Uses a Pub/Sub model to notify decoupled endpoints (dashboards, SMS) whenever the core engine processes new telemetry. |
+
+---
+
+## 📂 Directory Structure
+
+```text
+src/main/java/com/ultratrack/
 ├── domain/                     
 │   ├── model/                  
 │   ├── strategy/               
@@ -60,4 +81,23 @@ graph TD
 │   └── observer/               
 └── infrastructure/             
     ├── proxy/                  
-    └── iterator/
+    └── iterator/               
+```
+
+---
+
+## 🛠️ Local Development & Setup
+
+The project is optimized for automated infrastructure and runs smoothly in Unix-based environments.
+
+1. **Clone the repository** via Git.
+2. **Environment Setup:** For the most native and frictionless build experience, especially when dealing with containerization later on, we highly recommend using **WSL2 (Ubuntu)** if you are developing on a Windows machine.
+3. **Access Control:** Ensure your local SSH keys are configured for secure repository interactions.
+4. **Build:** Run the standard Java build sequence to resolve dependencies.
+
+---
+
+## 📅 Next Steps for Development
+- [ ] Define the internal fields of the `domain.model.TelemetryData` entity.
+- [ ] Implement the concrete classes for the Strategy pattern to handle math/physics calculations.
+- [ ] Wire the Observers to mock terminal outputs for local testing.
