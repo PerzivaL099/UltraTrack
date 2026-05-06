@@ -1,5 +1,5 @@
 package infrastructure.iterator;
 
-public class TelemetryCollection {
-    
+public interface TelemetryCollection {
+    Iterator<TelemetryData> createIterator();
 }

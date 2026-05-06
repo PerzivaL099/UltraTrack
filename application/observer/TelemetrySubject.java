@@ -1,5 +1,7 @@
 package application.observer;
 
-public class TelemetrySubject {
-    
+public interface TelemetrySubject {
+    void attach(Observer observer);
+    void detach(Observer observer);
+    void notifyObservers(TelemetryData data, Alert alert);
 }

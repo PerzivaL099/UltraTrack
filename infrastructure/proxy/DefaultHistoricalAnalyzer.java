@@ -1,5 +1,6 @@
 package infrastructure.proxy;
 
-public class DefaultHistoricalAnalyzer {
-    
+
+public interface DefaultHistoricalAnalyzer {
+    AnalysisResult analyzePastPerformance(String runnerProfileId, String terrainType);
 }

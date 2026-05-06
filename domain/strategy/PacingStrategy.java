@@ -1,5 +1,9 @@
 package domain.strategy;
 
-public class PacingStrategy {
-    
+import domain.model.TelemetryData;
+
+
+public interface PacingStrategy {
+    double calculateEstimatedFinishTime(TelemetryData currentData);
+    double calculateSodiumLoss(TelemetryData currentData);
 }
